@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+#bg {
+    background-image: url("./images/bg.png");
+    height: 600px;
+    width: 800px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.character_hero{
+    width: 35px;
+    height: 54px;
+    position: absolute;
+    background-image: url("./images/hero.png");
+    /*z-index: 1;*/
+    bottom: 0;
+    /*left: 383px;*/
+
+}
+
+.character_enemy{
+    width: 45px;
+    height: 54px;
+    position: absolute;
+    background-image: url("./images/enemy.png");
+}
+

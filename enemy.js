@@ -4,7 +4,6 @@ class Enemy {
         this.height = 54;
         this.enemyCreate();
         this.interval();
-        this.clearInterval();
     }
 
     // init() {
@@ -22,13 +21,15 @@ class Enemy {
 
     enemyFalling(){
         this.yValue = parseInt(this.div.style.top);
-        this.yValue += 15;
+        this.yValue += 26;
         this.div.style.top = this.yValue + "px";
     }
 
     enemyDying(){
         this.xValue = parseInt(this.div.style.left);
-        if(this.yValue >= 530 && ((this.xValue -27.5 <= (parseInt(current_hero))) && (this.xValue + 27.5 >= (parseInt(current_hero))))){
+        //console.log(parseInt(current_hero));
+        //if(this.yValue >= 530 && ((this.xValue -27.5 <= (parseInt(current_hero))) && (this.xValue + 27.5 >= (parseInt(current_hero))))){
+        if(this.yValue >= 520 && ((this.xValue -35 <= (parseInt(current_hero))) && (this.xValue + 45 >= (parseInt(current_hero))))){
             this.div.style.backgroundPosition = '-45px 0';
         }
     }
@@ -45,21 +46,31 @@ class Enemy {
 
 
         //es6
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             //this.enemyCreate();
             this.enemyFalling();
             this.enemyDying();
-        }, 200)
+            this.clearInterval();
+        }, 300)
+
+
     }
 
     clearInterval(){
-        if(this.yValue > 527) {
-            clearInterval();
+        if(this.yValue > 525) {
+            //console.log(this.yValue);
+            clearInterval(this.intervalId);
+            setInterval(()=>{
+                this.div.remove();
+            },1000);
         }
     }
-
-
 }
 
-enemy = new Enemy();
+new Enemy();
+
+setInterval(()=>{
+    new Enemy();
+},1200);
+
 //enemy.init();
